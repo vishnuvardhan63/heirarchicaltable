@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Table from './Table';
+
+const initialData = [
+  {
+    id: "electronics",
+    label: "Electronics",
+    value: 1500,
+    children: [
+      { id: "phones", label: "Phones", value: 800 },
+      { id: "laptops", label: "Laptops", value: 700 }
+    ]
+  },
+  {
+    id: "furniture",
+    label: "Furniture",
+    value: 1000,
+    children: [
+      { id: "tables", label: "Tables", value: 300 },
+      { id: "chairs", label: "Chairs", value: 700 }
+    ]
+  }
+];
 
 function App() {
+  const [data, setData] = useState(initialData);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hierarchical Table</h1>
+      <Table data={data} />
     </div>
   );
 }
